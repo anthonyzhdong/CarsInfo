@@ -117,6 +117,23 @@ namespace CarsInfo.API.Controllers
 
         }
 
+        [HttpDelete("{pointOfInterestId}")]
+        public ActionResult DeletePointOfInterest(int carId, int pointOfInterestId)
+        {
+            var car = CarsDataStore.Current.Cars.FirstOrDefault(c => c.Id == carId);
+            if (car == null)
+            {
+                return NotFound();
+            }
+            var pointOfInterestFromStore = car.PointsOfInterest.FirstOrDefault(p => p.Id == pointOfInterestId);
+            if (pointOfInterestFromStore == null)
+            {
+                return NotFound();
+            }
+            car.PointsOfInterest.Remove(pointOfInterestFromStore);
+            return NoContent();
+        }
+
 
 
     }
