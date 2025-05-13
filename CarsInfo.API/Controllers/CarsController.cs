@@ -60,6 +60,17 @@ namespace CarsInfo.API.Controllers
             return Ok(carToReturn.Model);
         }
 
+        [HttpGet("{id}/variant")]
+        public ActionResult<string> GetCarVariant(int id)
+        {
+            var carToReturn = CarsDataStore.Current.Cars.FirstOrDefault(c => c.Id == id);
+            if (carToReturn == null)
+            {
+                return NotFound();
+            }
+            return Ok(carToReturn.Variant);
+        }
+
 
 
     }
