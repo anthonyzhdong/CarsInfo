@@ -27,5 +27,16 @@ namespace CarsInfo.API.Controllers
             return Ok(carToReturn);
         }
 
+        [HttpGet("{id}/company")]
+        public ActionResult<string> GetCarCompany(int id)
+        {
+            var carToReturn = CarsDataStore.Current.Cars.FirstOrDefault(c => c.Id == id);
+            if (carToReturn == null)
+            {
+                return NotFound();
+            }
+            return Ok(carToReturn.Company);
+        }
+
     }
 }

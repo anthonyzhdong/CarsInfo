@@ -2,12 +2,12 @@
 
 namespace CarsInfo.API
 {
-    public class PorscheDataStore
+    public class CarsDataStore
     {
         public List<CarDto> Cars { get; set; }
-        public static PorscheDataStore Current { get; } = new PorscheDataStore();
+        public static CarsDataStore Current { get; } = new CarsDataStore();
 
-        public PorscheDataStore()
+        public CarsDataStore()
         {
             Cars = new List<CarDto>()
             {
