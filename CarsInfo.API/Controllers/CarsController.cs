@@ -71,6 +71,17 @@ namespace CarsInfo.API.Controllers
             return Ok(carToReturn.Variant);
         }
 
+        [HttpGet("{id}/year")]
+        public ActionResult<int> GetCarYear(int id)
+        {
+            var carToReturn = CarsDataStore.Current.Cars.FirstOrDefault(c => c.Id == id);
+            if (carToReturn == null)
+            {
+                return NotFound();
+            }
+            return Ok(carToReturn.Year);
+        }
+
 
 
     }
