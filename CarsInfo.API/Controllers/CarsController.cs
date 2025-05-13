@@ -84,5 +84,22 @@ namespace CarsInfo.API.Controllers
 
 
 
+
+
+
+        [HttpDelete("{id}")]
+        public ActionResult DeleteCar(int id)
+        {
+            var carToDelete = CarsDataStore.Current.Cars.FirstOrDefault(c => c.Id == id);
+            if (carToDelete == null)
+            {
+                return NotFound();
+            }
+            CarsDataStore.Current.Cars.Remove(carToDelete);
+            return NoContent();
+        }
+
+
+
     }
 }
