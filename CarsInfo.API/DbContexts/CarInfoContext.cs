@@ -5,12 +5,15 @@ namespace CarsInfo.Api.DbContexts
 {
     public class CarInfoContext : DbContext
     {
+        public CarInfoContext(DbContextOptions<CarInfoContext> options) : base(options)
+        {
+        }
         public DbSet<Car> Cars { get; set; }
         public DbSet<PointOfInterest> PointsOfInterest { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Data Source=CarInfo.db");
+            //optionsBuilder.UseSqlite("Data Source=CarInfo.db");
 
             base.OnConfiguring(optionsBuilder);
         }

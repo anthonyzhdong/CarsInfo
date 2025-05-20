@@ -19,7 +19,9 @@ builder.Services.AddControllers(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<CarInfoContext>();
+builder.Services.AddDbContext<CarInfoContext>(
+    dbContextOptions => dbContextOptions.UseSqlite(builder.Configuration["ConnectionStrings:CarInfoDBConnectionString"]));
+    
 
 var app = builder.Build();
 
