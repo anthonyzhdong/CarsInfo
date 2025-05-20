@@ -1,4 +1,8 @@
+using CarsInfo.Api.DbContexts;
 using Microsoft.AspNetCore.StaticFiles;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Sqlite;
+using Microsoft.Extensions.DependencyInjection; // Ensure this is included
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,8 +19,9 @@ builder.Services.AddControllers(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var app = builder.Build();
+builder.Services.AddDbContext<CarInfoContext>();
 
+var app = builder.Build();
 
 //// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

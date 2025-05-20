@@ -9,6 +9,7 @@ namespace CarsInfo.API.Controllers
     [ApiController]
     public class PointsOfInterestController : ControllerBase
     {
+        //points of interest
         [HttpGet]
         public ActionResult<IEnumerable<PointOfInterestDto>> GetPointsOfInterest(int carId)
         {
@@ -20,6 +21,7 @@ namespace CarsInfo.API.Controllers
             return Ok(car.PointsOfInterest);
         }
 
+        //points of interest/id
         [HttpGet("{pointOfInterestId}", Name = "GetPointOfInterest")]
         public ActionResult<PointOfInterestDto> GetPointOfInterest(int carId, int pointOfInterestId)
         {
